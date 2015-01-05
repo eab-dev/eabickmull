@@ -1,0 +1,8 @@
+div#ezwt-icml-zip {
+    border: 0 solid #999999;
+    border-radius: 2px 2px 2px 2px;
+    display: inline-block;
+    height: 24px;
+    padding: 1px 3px;
+    vertical-align: top;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<software>
+	<metadata>
+		<name>EAB Ickmull Extension</name>
+		<version>0.9alpha</version>
+		<copyright>Copyright (C) 1999-2014 EAB Ltd</copyright>
+		<license>GNU General Public License v2.0</license>
+	</metadata>
+
+	<dependencies>
+		<requires>
+		</requires>
+		<extends>
+			<extension name="ezwt" />
+		</extends>
+	</dependencies>
+</software>
