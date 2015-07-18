@@ -130,7 +130,7 @@ class IckmullZip
         if ( $imageHandler->attribute( 'is_valid' ) ) {
 
             $filepath = $imageHandler->attributeFromOriginal( 'url' );
-            $filename = $imageHandler->uniqueFilename();
+            $filename = \eZURLAliasML::convertToAlias( $imageHandler->uniqueFilename() );
 
             $this->zip->addFile( $filepath, $filename );
 
