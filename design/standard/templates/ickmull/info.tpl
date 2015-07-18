@@ -1,5 +1,4 @@
-This ZIP archive contains text content in Adobe InDesign ICML format and
-any associated images.
+This ZIP archive contains text content in Adobe InDesign ICML format and any associated images.
 
 Name: {$node.name}
 Downloaded from: {$node.url_alias|ezurl('no','full')}
@@ -18,7 +17,7 @@ Created by: {$node.object.owner.name}
 Author{if $node.data_map.author.content.author_list|count|gt(1)}s{/if}:
 {foreach $node.data_map.author.content.author_list as $author}
 
-{$author.name} {if $author.email}<{$author.email}>
+{$author.name} {if $author.email}<{$author.email}>{/if}
 {/foreach}
 
 {/if}
