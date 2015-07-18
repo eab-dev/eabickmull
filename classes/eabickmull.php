@@ -48,7 +48,7 @@ class IckmullZip
         $this->safeName = \eZURLAliasML::convertToAlias( $object->Name );
         $storageDir = \eZSys::storageDirectory();
         $this->filePath = $storageDir . "/ickmull_contentobjectid_" . $object->ContentObjectID . $this->safeName . ".zip";
-        $this->imageList = [];
+        $this->imageList = array();
 
         if ( $this->zip->open( $this->filePath, ZipArchive::OVERWRITE /* ZipArchive::CREATE */ ) !== TRUE) {
             die( "Cannot open file \"$this->filePath\"");
@@ -64,7 +64,7 @@ class IckmullZip
 
     private function appendImageDetails( $filename, $caption = "", $altText = "" )
     {
-        $this->imageList[] = [ $filename, $caption, $altText ];
+        $this->imageList[] = array( $filename, $caption, $altText );
     }
 
     private function addImageListCSV( $filename = self::IMAGELISTFILE )
