@@ -29,16 +29,13 @@ Requires eZ Publish 4 or 5 and the following extensions:
 2. Edit `settings/override/site.ini.append.php`
 
 3. Under `[ExtensionSettings]` add:
-```
-ActiveExtensions[]=eabickmull
-```
+
+        ActiveExtensions[]=eabickmull
 
 4. Run the following script to give Editor role permission to download:
-```
-php extension/eabickmull/update/editor_role_add_policy.php
-```
+
+        php extension/eabickmull/update/editor_role_add_policy.php
 
 5. Clear the cache:
-```
-bin/php/ezcache.php --clear-all
-```
+
+        bin/php/ezcache.php --clear-all
