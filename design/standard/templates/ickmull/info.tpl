@@ -12,19 +12,17 @@ Created by: {$node.object.owner.name}
 
 
 
-{if $node.data_map.author.content.author_list|count|gt(0)}
+Contains {$image_count} image{if $image_count|gt(1)}s{/if}:
 
-Author{if $node.data_map.author.content.author_list|count|gt(1)}s{/if}:
-{foreach $node.data_map.author.content.author_list as $author}
+{if ezini( 'Archive', 'ListImagesInInfo', 'ickmull.ini' )|eq( "enabled" )}
 
-{$author.name} {if $author.email}<{$author.email}>{/if}
+{foreach $image_list as $image}
+{include uri="design:ickmull/image.tpl" image=$image}
 {/foreach}
-
 {/if}
 
+{if and( ezini( 'Archive', 'ListImagesInCSV', 'ickmull.ini' )|eq( "enabled" ), $image_count|gt(0) )}
 
-{if $image_count|gt(0)}
+See {$image_file}.
 
-Contains {$image_count} image{if $image_count|gt(1)}s{/if}: see {$image_file}.
-
-
+{/if}

@@ -21,6 +21,7 @@
 namespace EAB\Ickmull;
 
 use DOMDocument;
+use eZINI;
 use SimpleXMLElement;
 use XSLTProcessor;
 use ZipArchive;
@@ -89,6 +90,7 @@ class IckmullZip
         $tpl = \eZTemplate::factory();
         $tpl->setVariable( 'node', $node );
         $tpl->setVariable( 'image_count', count( $this->imageList ) );
+        $tpl->setVariable( 'image_list', $this->imageList );
         $tpl->setVariable( 'image_file', self::IMAGELISTFILE );
         $info = str_replace("\n", "\r\n", $tpl->fetch( 'design:ickmull/info.tpl' ) );
         $this->zip->addFromString( self::INFOFILE, $info );
@@ -157,7 +159,10 @@ class IckmullZip
     */
     public function complete()
     {
-        $this->addImageListCSV();
+        $ini = eZINI::instance( 'ickmull.ini' );
+        if ( $ini->variable( 'Archive', 'ListImagesInCSV' ) == "enabled" ) {
+            $this->addImageListCSV();
+        }
         $this->zip->close();
     }
 
