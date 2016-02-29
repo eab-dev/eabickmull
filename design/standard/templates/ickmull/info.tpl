@@ -1,15 +1,16 @@
 This ZIP archive contains text content in Adobe InDesign ICML format and any associated images.
 
 Name: {$node.name}
+
 Downloaded from: {$node.url_alias|ezurl('no','full')}
 Downloaded on: {currentdate()|datetime( 'custom', '%d %F %Y %H:%i' )}
 
+Created on: {$node.object.published|datetime( 'custom', '%d %F %Y %H:%i' )}
+Created by: {$node.object.owner.name}
 Last modified on: {$node.object.modified|datetime( 'custom', '%d %F %Y %H:%i' )}
 Modified by: {$node.creator.name}
 
-Created on: {$node.object.published|datetime( 'custom', '%d %F %Y %H:%i' )}
-Created by: {$node.object.owner.name}
-
+{include uri="design:ickmull/authors.tpl" node=$node}
 
 
 Contains {$image_count} image{if $image_count|gt(1)}s{/if}:
