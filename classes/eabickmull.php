@@ -48,11 +48,14 @@ class IckmullZip
 
         $this->safeName = \eZURLAliasML::convertToAlias( $object->Name );
         $storageDir = \eZSys::storageDirectory();
-        $this->filePath = $storageDir . "/ickmull_contentobjectid_" . $object->ContentObjectID . $this->safeName . ".zip";
-        $this->imageList = array();
 
-        if ( $this->zip->open( $this->filePath, ZipArchive::OVERWRITE /* ZipArchive::CREATE */ ) !== TRUE) {
-            die( "Cannot open file \"$this->filePath\"");
+        $this->imageList = array();
+        $this->filePath = $storageDir . "/ickmull_" . $object->ID . "_" . $this->safeName . ".zip";
+
+        if ( $this->zip->open( $this->filePath, ZipArchive::CREATE ) !== true ) {
+            if ( $this->zip->open( $this->filePath, ZipArchive::OVERWRITE ) !== true ) {
+                die( "Cannot open file \"$this->filePath\"");
+            }
         }
     }
 
