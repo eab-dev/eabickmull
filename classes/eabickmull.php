@@ -66,9 +66,14 @@ class IckmullZip
         }
     }
 
-    private function appendImageDetails( $filename, $caption = "", $altText = "" )
+    private function appendImageDetails( $filename, $caption = "", $altText = "", $object = null )
     {
-        $this->imageList[] = array( $filename, $caption, $altText );
+        $this->imageList[] = array(
+                                    'filename' =>$filename,
+                                    'caption' => $caption,
+                                    'alt_text' => $altText,
+                                    'object' => $object
+                                );
     }
 
     private function addImageListCSV( $filename = self::IMAGELISTFILE )
@@ -150,7 +155,7 @@ class IckmullZip
 
             $altText = $imageHandler->attribute( 'alternative_text' );
 
-            $this->appendImageDetails( $filename, $captionText, $altText );
+            $this->appendImageDetails( $filename, $captionText, $altText, $object );
         }
     }
 
